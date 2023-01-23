@@ -13,10 +13,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
+          cache: 'yarn'
           node-version: 'lts/*'
           registry-url: https://registry.npmjs.org/
       - name: Install Dependencies
-        run: yarn
+        run: yarn --frozen-lockfile
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
