@@ -1,7 +1,14 @@
 {
   "name": "@rshackleton/astro-portabletext",
   "version": "0.0.1",
-  "type": "module",
+  "author": {
+    "email": "shackleberry112@gmail.com",
+    "name": "Richard Shackleton",
+    "url": "https://rshackleton.co.uk"
+  },
+  "bugs": {
+    "url": "https://github.com/rshackleton/astro-portabletext/issues"
+  },
   "exports": {
     ".": "./index.ts"
   },
@@ -9,10 +16,16 @@
     "src",
     "index.ts"
   ],
+  "homepage": "https://github.com/rshackleton/astro-portabletext#readme",
   "keywords": [
     "astro-component"
   ],
-  "license": "MIT",
+  "license": "mit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rshackleton/astro-portabletext.git"
+  },
+  "type": "module",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint --ext .astro,.js,.ts .",
@@ -22,6 +35,7 @@
     "@portabletext/toolkit": "^2.0.0"
   },
   "devDependencies": {
+    "@portabletext/types": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.48.2",
     "astro": "^1.9.0",
@@ -31,7 +45,8 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.7.2",
-    "prettier-plugin-tailwindcss": "^0.2.1"
+    "prettier-plugin-tailwindcss": "^0.2.1",
+    "typescript": "^4.9.4"
   },
   "peerDependencies": {
     "astro": "^1.9.0"
