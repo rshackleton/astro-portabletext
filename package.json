@@ -21,6 +21,10 @@
     "astro-component"
   ],
   "license": "mit",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rshackleton/astro-portabletext.git"
