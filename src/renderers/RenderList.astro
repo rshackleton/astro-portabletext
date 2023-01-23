@@ -1,0 +1,33 @@
+---
+import type { ToolkitPortableTextList } from '@portabletext/toolkit';
+import type { GlobalProps, ListComponentProps } from '../rendererTypes';
+
+interface Props {
+  global: GlobalProps;
+  indexInParent: number;
+  node: ToolkitPortableTextList;
+}
+
+const { global, indexInParent, node } = Astro.props;
+
+const { components } = global;
+
+const { listItem } = node;
+
+const ListComponent =
+  typeof components.list === 'function' ? components.list : components.list[listItem];
+
+if (!ListComponent) {
+  global.missingComponentHandler(listItem, 'listStyle');
+}
+
+const listProps: ListComponentProps = {
+  global,
+  indexInParent,
+  value: node,
+};
+---
+
+<ListComponent portableText={listProps}>
+  <slot />
+</ListComponent>

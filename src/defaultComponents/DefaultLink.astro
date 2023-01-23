@@ -1,0 +1,20 @@
+---
+import type { MarkComponentProps } from '../rendererTypes';
+
+interface Props {
+  portableText: MarkComponentProps;
+}
+
+const { value } = Astro.props.portableText;
+const href = value?.href ?? value?.url ?? value?.link ?? value?.value;
+---
+
+{
+  typeof href === 'string' ? (
+    <a href={href}>
+      <slot />
+    </a>
+  ) : (
+    <slot />
+  )
+}

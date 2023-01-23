@@ -1,0 +1,14 @@
+---
+import type { ToolkitTextNode } from '@portabletext/toolkit';
+import type { GlobalProps } from '../rendererTypes';
+
+interface Props {
+  global: GlobalProps;
+  node: ToolkitTextNode;
+}
+
+const { text } = Astro.props.node;
+const isLineBreak = text === '\n';
+---
+
+{isLineBreak ? <br /> : text}

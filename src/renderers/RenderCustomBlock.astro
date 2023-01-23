@@ -1,0 +1,31 @@
+---
+import type { ArbitraryTypedObject, PortableTextBlock } from '@portabletext/types';
+import type { CustomBlockComponentProps, GlobalProps } from '../rendererTypes';
+
+interface Props {
+  global: GlobalProps;
+  indexInParent: number;
+  isInline: boolean;
+  node: ArbitraryTypedObject;
+  parentBlock: PortableTextBlock;
+}
+
+const { global, indexInParent, isInline, node, parentBlock } = Astro.props;
+const { components } = global;
+const { _type } = node;
+const CustomComponent = components.types[_type];
+
+if (!CustomComponent) {
+  global.missingComponentHandler(_type, 'block');
+}
+
+const componentProps: CustomBlockComponentProps = {
+  global,
+  indexInParent,
+  isInline,
+  parentBlock,
+  value: node,
+};
+---
+
+{CustomComponent ? <CustomComponent portableText={componentProps} /> : null}

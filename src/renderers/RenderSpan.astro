@@ -1,0 +1,35 @@
+---
+import { spanToPlainText, ToolkitNestedPortableTextSpan } from '@portabletext/toolkit';
+import type { PortableTextBlock } from '@portabletext/types';
+import type { GlobalProps, MarkComponentProps } from '../rendererTypes';
+
+interface Props {
+  global: GlobalProps;
+  indexInParent: number;
+  node: ToolkitNestedPortableTextSpan;
+  parentBlock?: PortableTextBlock;
+}
+
+const { global, indexInParent, node, parentBlock } = Astro.props;
+
+const { components } = global;
+const { markType } = node;
+
+const MarkComponent = components.marks[markType];
+
+if (!MarkComponent) {
+  global.missingComponentHandler(markType, 'mark');
+}
+
+const markProps: MarkComponentProps = {
+  global,
+  parentBlock,
+  markType,
+  value: node.markDef,
+  markKey: node.markKey,
+  plainTextContent: spanToPlainText(node),
+  indexInParent,
+};
+---
+
+<MarkComponent portableText={markProps}><slot /></MarkComponent>

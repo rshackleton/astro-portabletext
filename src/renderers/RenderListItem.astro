@@ -1,0 +1,51 @@
+---
+import type { ToolkitPortableTextListItem } from '@portabletext/toolkit';
+import type { GlobalProps, ListItemComponentProps } from '../rendererTypes';
+
+interface Props {
+  global: GlobalProps;
+  indexInParent: number;
+  node: ToolkitPortableTextListItem;
+}
+
+const { global, indexInParent, node } = Astro.props;
+
+const { components } = global;
+
+const { listItem = 'bullet', style = 'normal' } = node;
+
+const ListItemComponent =
+  typeof components.listItem === 'function' ? components.listItem : components.listItem[listItem];
+
+if (!ListItemComponent) {
+  global.missingComponentHandler(style, 'listItemStyle');
+}
+
+const StyleComponent = style !== 'normal' ? components.block[style] : undefined;
+
+const listItemProps: ListItemComponentProps = {
+  global,
+  indexInParent,
+  value: node,
+};
+---
+
+<ListItemComponent portableText={listItemProps}>
+  {
+    StyleComponent ? (
+      <StyleComponent
+        portableText={{
+          ...listItemProps,
+          value: {
+            ...node,
+            listItem: undefined,
+          },
+        }}
+      >
+        <slot />
+      </StyleComponent>
+    ) : (
+      <slot />
+    )
+  }
+</ListItemComponent>

@@ -1,0 +1,24 @@
+---
+import type { BlockComponentProps } from '../rendererTypes';
+
+interface Props {
+  portableText: BlockComponentProps;
+}
+
+const { value } = Astro.props.portableText;
+const Style = value.style ?? 'normal';
+---
+
+{
+  ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote'].includes(Style) ? (
+    <Style>
+      <slot />
+    </Style>
+  ) : Style === 'normal' ? (
+    <p>
+      <slot />
+    </p>
+  ) : (
+    <slot />
+  )
+}

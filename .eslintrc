@@ -1,0 +1,36 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "ignorePatterns": ["**/*.log", "**/.DS_Store", "*.", "dist", "node_modules", ".vercel"],
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "extends": ["plugin:astro/recommended", "plugin:astro/jsx-a11y-recommended", "prettier"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
+      }
+    },
+    {
+      "files": ["**/*.astro/*.js", "*.astro/*.js"],
+      "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "@typescript-eslint/consistent-type-imports": ["error", { "prefer": "type-imports" }]
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "@typescript-eslint/consistent-type-imports": ["error", { "prefer": "type-imports" }]
+      }
+    }
+  ]
+}

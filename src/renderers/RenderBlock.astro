@@ -1,0 +1,31 @@
+---
+import type { PortableTextBlock } from '@portabletext/types';
+import type { BlockComponentProps, GlobalProps } from '../rendererTypes';
+
+interface Props {
+  global: GlobalProps;
+  node: PortableTextBlock;
+  indexInParent: number;
+}
+
+const { global, indexInParent, node } = Astro.props;
+
+const { components } = global;
+
+const { style = 'normal' } = node;
+
+const BlockComponent =
+  typeof components.block === 'function' ? components.block : components.block[style];
+
+if (!BlockComponent) {
+  global.missingComponentHandler(style, 'blockStyle');
+}
+
+const blockProps: BlockComponentProps = {
+  global,
+  indexInParent,
+  value: node,
+};
+---
+
+<BlockComponent portableText={blockProps}><slot /></BlockComponent>

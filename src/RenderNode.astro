@@ -1,0 +1,102 @@
+---
+import {
+  buildMarksTree,
+  isPortableTextBlock,
+  isPortableTextListItemBlock,
+  isPortableTextToolkitList,
+  isPortableTextToolkitSpan,
+  isPortableTextToolkitTextNode,
+} from '@portabletext/toolkit';
+import type { PortableTextBlock } from '@portabletext/types';
+import type { GenericNode } from './ptTypes';
+import RenderBlock from './renderers/RenderBlock.astro';
+import RenderCustomBlock from './renderers/RenderCustomBlock.astro';
+import RenderList from './renderers/RenderList.astro';
+import RenderListItem from './renderers/RenderListItem.astro';
+import RenderSpan from './renderers/RenderSpan.astro';
+import RenderText from './renderers/RenderText.astro';
+import type { GlobalProps } from './rendererTypes';
+
+interface Props {
+  global: GlobalProps;
+  options: {
+    indexInParent: number;
+    isInline?: boolean;
+    node: GenericNode;
+    parentBlock?: PortableTextBlock;
+  };
+}
+
+const { global, options } = Astro.props;
+const { node, indexInParent, parentBlock, isInline } = options;
+---
+
+{
+  isPortableTextToolkitList(node) ? (
+    <RenderList global={global} indexInParent={indexInParent} node={node}>
+      {node.children.map((child, childIndex) => (
+        <Astro.self
+          global={global}
+          options={{
+            indexInParent: childIndex,
+            isInline: undefined,
+            node: child,
+            parentBlock: undefined,
+          }}
+        />
+      ))}
+    </RenderList>
+  ) : isPortableTextListItemBlock(node) ? (
+    <RenderListItem global={global} indexInParent={indexInParent} node={node}>
+      {buildMarksTree(node).map((child, childIndex) => (
+        <Astro.self
+          global={global}
+          options={{
+            indexInParent: childIndex,
+            isInline: true,
+            node: child,
+            parentBlock: node,
+          }}
+        />
+      ))}
+    </RenderListItem>
+  ) : isPortableTextToolkitSpan(node) ? (
+    <RenderSpan global={global} indexInParent={indexInParent} node={node} parentBlock={parentBlock}>
+      {node.children.map((child, childIndex) => (
+        <Astro.self
+          global={global}
+          options={{
+            indexInParent: childIndex,
+            isInline: true,
+            node: child,
+            parentBlock,
+          }}
+        />
+      ))}
+    </RenderSpan>
+  ) : isPortableTextBlock(node) ? (
+    <RenderBlock global={global} indexInParent={indexInParent} node={node}>
+      {buildMarksTree(node).map((child, childIndex) => (
+        <Astro.self
+          global={global}
+          options={{
+            indexInParent: childIndex,
+            isInline: true,
+            node: child,
+            parentBlock: node,
+          }}
+        />
+      ))}
+    </RenderBlock>
+  ) : isPortableTextToolkitTextNode(node) ? (
+    <RenderText global={global} node={node} />
+  ) : node ? (
+    <RenderCustomBlock
+      global={global}
+      indexInParent={indexInParent}
+      isInline={isInline}
+      node={node}
+      parentBlock={parentBlock}
+    />
+  ) : null
+}

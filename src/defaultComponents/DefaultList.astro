@@ -1,0 +1,22 @@
+---
+import type { ListComponentProps } from '../rendererTypes';
+
+interface Props {
+  portableText: ListComponentProps;
+}
+
+const { value } = Astro.props.portableText;
+const { listItem } = value;
+---
+
+{
+  listItem === 'number' ? (
+    <ol>
+      <slot />
+    </ol>
+  ) : (
+    <ul>
+      <slot />
+    </ul>
+  )
+}

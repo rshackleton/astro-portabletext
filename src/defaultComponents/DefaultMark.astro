@@ -1,0 +1,35 @@
+---
+import type { MarkComponentProps } from '../rendererTypes';
+
+interface Props {
+  portableText: MarkComponentProps;
+}
+
+const { markType } = Astro.props.portableText;
+---
+
+{
+  markType === 'strong' ? (
+    <strong>
+      <slot />
+    </strong>
+  ) : markType === 'em' ? (
+    <em>
+      <slot />
+    </em>
+  ) : markType === 'code' ? (
+    <code>
+      <slot />
+    </code>
+  ) : markType === 'underline' ? (
+    <span style="text-decoration: underline;">
+      <slot />
+    </span>
+  ) : markType === 'strike-through' ? (
+    <del>
+      <slot />
+    </del>
+  ) : (
+    <slot />
+  )
+}
