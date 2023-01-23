@@ -1,6 +1,6 @@
 {
   "name": "@rshackleton/astro-portabletext",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "author": {
     "email": "shackleberry112@gmail.com",
     "name": "Richard Shackleton",
@@ -25,21 +25,46 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
+  "release": {
+    "branches": [
+      "+([0-9])?(.{+([0-9]),x}).x",
+      "main",
+      "next",
+      "next-major",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rshackleton/astro-portabletext.git"
+    "url": "https://github.com/rshackleton/astro-portabletext.git"
   },
   "type": "module",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint --ext .astro,.js,.ts .",
-    "lint:fix": "eslint --ext .astro,.js,.ts --fix ."
+    "lint:fix": "eslint --ext .astro,.js,.ts --fix .",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@portabletext/toolkit": "^2.0.0"
   },
   "devDependencies": {
     "@portabletext/types": "^2.0.0",
+    "@semantic-release/changelog": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.48.2",
     "astro": "^1.9.0",
@@ -49,8 +74,8 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.7.2",
-    "prettier-plugin-tailwindcss": "^0.2.1",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "semantic-release": "^20.0.3"
   },
   "peerDependencies": {
     "astro": "^1.9.0"
