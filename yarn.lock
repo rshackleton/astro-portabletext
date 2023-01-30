@@ -785,10 +785,10 @@
   dependencies:
     "@portabletext/types" "^2.0.0"
 
-"@portabletext/types@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-2.0.0.tgz#920d9ffb19ea68c6b0857fe1e97e27c7464d5055"
-  integrity sha512-AjbCPt9x9U0XFwLuVnIxweBrDAlKKcPJRVkpckjMk77VKEQoYvX2dITf5QtQf1TlLIx8zHJFtMcLmiqDJiGuLg==
+"@portabletext/types@^2.0.0", "@portabletext/types@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-2.0.1.tgz#d3cae84005106873d15ed22309005d1496a8e450"
+  integrity sha512-y2kXVZ7A3MkVO0Y1EGW25qKw6Wh51bEjDnkt4c1deVTp9uMUE1PzLs90zvYNZvXgvMSYYxDC8LgjTnA0k6728A==
 
 "@proload/core@^0.3.3":
   version "0.3.3"
