@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/react": "2.0.2",
     "@astrojs/vercel": "3.0.0",
-    "@portabletext/toolkit": "2.0.1",
+    "@rshackleton/astro-portabletext": "0.0.0-development",
     "@sanity/client": "4.0.1",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",

@@ -1,0 +1,83 @@
+{
+  "name": "@rshackleton/astro-portabletext",
+  "version": "0.0.0-development",
+  "author": {
+    "email": "shackleberry112@gmail.com",
+    "name": "Richard Shackleton",
+    "url": "https://rshackleton.co.uk"
+  },
+  "bugs": {
+    "url": "https://github.com/rshackleton/astro-portabletext/issues"
+  },
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "homepage": "https://github.com/rshackleton/astro-portabletext#readme",
+  "keywords": [
+    "astro-component"
+  ],
+  "license": "mit",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "release": {
+    "branches": [
+      "+([0-9])?(.{+([0-9]),x}).x",
+      "main",
+      "next",
+      "next-major",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rshackleton/astro-portabletext.git"
+  },
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint --ext .astro,.js,.ts .",
+    "lint:fix": "eslint --ext .astro,.js,.ts --fix .",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "@portabletext/toolkit": "^2.0.1"
+  },
+  "devDependencies": {
+    "@portabletext/types": "^2.0.2",
+    "@semantic-release/changelog": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.48.2",
+    "astro": "^2.0.4",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-astro": "^0.23.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "prettier": "^2.8.3",
+    "prettier-plugin-astro": "^0.7.2",
+    "typescript": "^4.9.4",
+    "semantic-release": "^20.0.3"
+  },
+  "peerDependencies": {
+    "astro": "1.x || 2.x"
+  }
+}
