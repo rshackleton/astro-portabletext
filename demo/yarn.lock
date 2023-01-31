@@ -86,7 +86,7 @@
     undici "^5.14.0"
     which-pm-runs "^1.1.0"
 
-"@astrojs/vercel@^3.0.0":
+"@astrojs/vercel@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@astrojs/vercel/-/vercel-3.0.0.tgz#15d9d3ed2a6b9c328ea8b0a41c2bef8dee25e9a9"
   integrity sha512-fzoa8C0AbiLNkAkTZV4wIEdqaE/U99x0mFSHgA3SV2OwWszch29l8pQMnLUHXTXVy1OwmNba4QRm1B8hkPwo9g==
@@ -725,6 +725,13 @@
   dependencies:
     "@portabletext/toolkit" "^1.0.5"
     "@portabletext/types" "^1.0.3"
+
+"@portabletext/toolkit@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@portabletext/toolkit/-/toolkit-2.0.1.tgz#ce1f6a27b19e6bb2e36ffcb39c5e05b09d55e9dc"
+  integrity sha512-vr2SeDFUFV+VmRIyYsHBMimZLiiN0S7qIridt/YLJs3Wm1dI4jsfUam82AQwheSMjvWdBiBZ+Wsjq5HZBG4htw==
+  dependencies:
+    "@portabletext/types" "^2.0.0"
 
 "@portabletext/toolkit@^1.0.5":
   version "1.0.8"
@@ -1387,7 +1394,7 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha512-3CYzex9M9FGQjCGMGyi6/31c8GJbgb0qGyrx5HWxPd0aCwh4cB2YjMb2Xf9UuoogrMrlO9cTqnB5rI5GHZTcUA==
 
-astro@^2.0.0:
+astro@2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.4.tgz#0ae0904bb7450741a541b63b3838c6b40efa0dd6"
   integrity sha512-VSxFONW4hazODUIzjpoPdSZ4eRMz86pQn375277GhJDDRq/kfA5tSfvDFtySlAeEWrsE9W8tC2Jj3HuYcRYRig==
