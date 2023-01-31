@@ -1,0 +1,37 @@
+<div id="app"></div>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  #app {
+    height: 100vh;
+    max-height: 100dvh;
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    overflow: auto;
+  }
+</style>
+
+<script>
+  import { defineConfig, renderStudio } from 'sanity';
+  import { deskTool } from 'sanity/desk';
+
+  import { root } from '../../schema/root';
+
+  const config = defineConfig({
+    basePath: '/studio',
+    dataset: import.meta.env.PUBLIC_SANITY_STUDIO_DATASET ?? '',
+    name: 'default',
+    plugins: [deskTool()],
+    projectId: import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID ?? '',
+    schema: {
+      types: [root],
+    },
+  });
+
+  renderStudio(document.getElementById('app'), config);
+</script>

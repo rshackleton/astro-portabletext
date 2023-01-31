@@ -60,14 +60,14 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@portabletext/toolkit": "^2.0.0"
+    "@portabletext/toolkit": "^2.0.1"
   },
   "devDependencies": {
-    "@portabletext/types": "^2.0.0",
+    "@portabletext/types": "^2.0.2",
     "@semantic-release/changelog": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.48.2",
-    "astro": "^1.9.0",
+    "astro": "^2.0.4",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-astro": "^0.23.0",
@@ -78,6 +78,6 @@
     "semantic-release": "^20.0.3"
   },
   "peerDependencies": {
-    "astro": "^1.9.0"
+    "astro": "1.x || 2.x"
   }
 }
